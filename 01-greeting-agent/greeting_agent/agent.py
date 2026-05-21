@@ -1,0 +1,37 @@
+from google.adk.agents import Agent
+
+root_agent = Agent(
+    name="greeting_agent",
+    # https://ai.google.dev/gemini-api/docs/models
+    model="gemini-3.5-flash",
+    description="Greeting agent",
+    instruction="""
+    You are a helpful assistant that greets the user. 
+    Ask for the user's name and greet them by name.
+    """,
+)
+
+
+import json 
+
+def lambda_handler(event, context): 
+
+    query_params = event['queryStringParameters'] 
+    query_params = int(query_params['year']) 
+    result = str(query_params) + (' is a leap year' if is_leap_year(int(query_params)) else ' is not a leap year') 
+    return { 
+        'statusCode': 200, 
+        'body': json.dumps(result) 
+    } 
+
+def is_leap_year(year): 
+    if year % 4 == 0: 
+        if year % 100 == 0: 
+            if year % 400 == 0: 
+                return True 
+            else: 
+                return False 
+        else: 
+            return True 
+    else: 
+        return False 
