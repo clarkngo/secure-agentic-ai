@@ -2,7 +2,7 @@
 ***
 
 ## System Description
-Threat model for the HOS02A multi_tool_agent (weather_time_agent).
+Threat model for the HOS03A dad_joke_agent (LiteLLM + OpenRouter).
 
 ## Findings
 * **Description:** Overflow Buffers
